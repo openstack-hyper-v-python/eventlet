@@ -38,12 +38,15 @@ _rfile = _wfile = None
 
 _bytetosend = ' '.encode()
 
+
 def _signal_t2e():
     _wfile.write(_bytetosend)
     _wfile.flush()
 
+
 _reqq = None
 _rspq = None
+
 
 def tpool_trampoline():
     global _rspq
@@ -64,6 +67,7 @@ def tpool_trampoline():
 
 SYS_EXCS = (KeyboardInterrupt, SystemExit)
 EXC_CLASSES = (Exception, timeout.Timeout)
+
 
 def tworker():
     global _rspq
@@ -144,6 +148,7 @@ def proxy_call(autowrap, f, *args, **kwargs):
         return Proxy(rv, autowrap)
     else:
         return rv
+
 
 class Proxy(object):
     """
@@ -234,6 +239,8 @@ _nthreads = int(os.environ.get('EVENTLET_THREADPOOL_SIZE', 20))
 _threads = []
 _coro = None
 _setup_already = False
+
+
 def setup():
     global _rfile, _wfile, _threads, _coro, _setup_already, _rspq, _reqq
     if _setup_already:
@@ -293,6 +300,7 @@ def killall():
     _wfile = None
     _rspq = None
     _setup_already = False
+
 
 def set_num_threads(nthreads):
     global _nthreads

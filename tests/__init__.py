@@ -21,9 +21,11 @@ from eventlet import debug, hubs, tpool
 # convenience for importers
 main = unittest.main
 
+
 def s2b(s):
     """portable way to convert string to bytes. In 3.x socket.send and recv require bytes"""
     return s.encode()
+
 
 def skipped(func):
     """ Decorator that marks a function as skipped.  Uses nose's SkipTest exception
@@ -109,6 +111,7 @@ def skip_on_windows(func):
     """ Decorator that skips a test on Windows."""
     import sys
     return skip_if(sys.platform.startswith('win'))(func)
+
 
 def skip_if_no_itimer(func):
     """ Decorator that skips a test if the `itimer` module isn't found """
@@ -235,6 +238,7 @@ def find_command(command):
         if os.access(p, os.X_OK):
             return p
     raise IOError(errno.ENOENT, 'Command not found: %r' % command)
+
 
 def silence_warnings(func):
     def wrapper(*args, **kw):
