@@ -6,7 +6,7 @@ from os import path
 
 setup(
     name='eventlet',
-    version="15.0.dev",
+    version="15.0",
     description='Highly concurrent networking library',
     author='Linden Lab',
     author_email='eventletdev@lists.secondlife.com',
